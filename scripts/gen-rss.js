@@ -6,8 +6,8 @@ const matter = require('gray-matter')
 async function generate() {
   const feed = new RSS({
     title: 'Le Vinh Khang',
-    site_url: 'https://levinhkhang.dev',
-    feed_url: 'https://levinhkhang.dev/feed.xml'
+    site_url: 'https://levinhkhang.org',
+    feed_url: 'https://levinhkhang.org/feed.xml'
   })
 
   const posts = await fs.readdir(path.join(__dirname, '..', 'pages', 'posts'))
