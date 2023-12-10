@@ -1,0 +1,65 @@
+---
+title: "Journey of Creating My Website 🚀"
+date: 2023/12/10
+description: "Explore the journey of creating this website."
+tags: ["web development", "Next.js", "React", "programming"]
+authors: ["Le Vinh Khang"]
+---
+
+## Beginnings 🌱
+
+The idea for this website sprouted from a desire to share knowledge and experiences in the field of web development. Drawing inspiration from the need for a platform that empowers both beginners and experienced developers alike, we envisioned a space where collaboration, learning, and innovation thrive.
+
+## Technology Stack 🛠️
+
+The website is built using Next.js, a React framework that allows for easy creation of pages and dynamic routes. This choice was made for its simplicity, scalability, and efficient handling of both static and dynamic content.
+
+### Pre-rendering Strategies 🖌️
+
+The site leverages Next.js's pre-rendering capabilities for optimal performance and SEO. The two forms of pre-rendering employed are:
+
+#### Static Generation 🏭
+
+Static Generation was utilized for most pages, such as the landing page, about page, and contact page. This approach ensures that these pages are pre-rendered at build time, resulting in faster loading speeds and improved SEO.
+
+#### Server-side Rendering 🌐
+
+In cases where dynamic data is essential, such as real-time updates or user-specific content, Server-side Rendering was the preferred choice. This is particularly evident in sections like the user dashboard, where content is tailored to each user.
+
+### Data Fetching 🔄
+
+The site fetches data from various sources to provide dynamic and up-to-date content. Data fetching strategies include:
+
+#### Static Generation with Data 📊
+
+For pages where content depends on external data, such as blog posts, the `getStaticProps` function is utilized to fetch and pre-render the necessary data during build time.
+
+```jsx
+// Example MDX Blog Post Component
+import React from 'react';
+
+function BlogPost({ title, content }) {
+  return (
+    <article>
+      <h1>{title}</h1>
+      <div dangerouslySetInnerHTML={{ __html: content }} />
+    </article>
+  );
+}
+
+export default BlogPost;
+```
+
+#### Dynamic Routes 🛤️
+
+Dynamic routes, enabled by Next.js, are employed for sections like the blog post details page (`posts/[id].js`). The `getStaticPaths` and `getStaticProps` functions work together to fetch data and pre-render pages based on dynamic paths.
+
+## Challenges and Learnings 🤔
+
+Throughout the development process, several challenges were encountered and valuable lessons were learned. Some of the noteworthy experiences include optimizing data fetching for large datasets, implementing responsive design for a seamless user experience, and fine-tuning SEO strategies for better discoverability.
+
+## Conclusion 🎉
+
+In conclusion, the journey of creating this website involved careful planning, technology decisions, and overcoming challenges. The end result is a platform that aims to provide valuable content to the web development community. As we continue to grow, user feedback and technological advancements will guide our ongoing efforts to enhance and expand the features of this site.
+
+Thank you for joining us on this exploration of how this site came to life. We look forward to the continued evolution of this platform and the exciting developments that lie ahead.
