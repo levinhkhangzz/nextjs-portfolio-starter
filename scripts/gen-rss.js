@@ -5,7 +5,7 @@ const matter = require('gray-matter')
 
 async function generate() {
   const feed = new RSS({
-    title: 'Le Vinh Khang',
+    title: 'Your Name',
     site_url: 'https://levinhkhang.org',
     feed_url: 'https://levinhkhang.org/feed.xml'
   })
@@ -21,14 +21,12 @@ async function generate() {
       )
       const frontmatter = matter(content)
 
-      const categories = frontmatter.data.tag ? frontmatter.data.tag.split(', ') : [];
-
       allPosts.push({
         title: frontmatter.data.title,
         url: '/posts/' + name.replace(/\.mdx?/, ''),
         date: frontmatter.data.date,
         description: frontmatter.data.description,
-        categories,
+        categories: frontmatter.data.tag.split(', '),
         author: frontmatter.data.author
       })
     })
