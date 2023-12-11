@@ -1,0 +1,34 @@
+version: 1
+name: my-portfolio-nextjs
+region: us-east-1 # Change this to your desired region
+framework: next.js
+
+frontend:
+  phases:
+    # Giai đoạn preBuild để cài đặt dependencies
+    preBuild:
+      commands:
+        - yarn install
+
+    # Giai đoạn build để build ứng dụng Next.js
+    build:
+      commands:
+        - yarn run build
+
+    # Giai đoạn deploy để deploy ứng dụng đã build
+    deploy:
+      commands:
+        - aws s3 sync .next/ s3://my-portfolio-bucket/ # Thay thế "my-portfolio-bucket" bằng tên bucket S3 của bạn
+
+  artifacts:
+    # Đường dẫn đến folder chứa các file build
+    baseDirectory: .next
+
+    # Các file được deploy
+    files:
+      - '**/*'
+
+  cache:
+    # Thư mục cache để lưu dependencies
+    paths:
+      - node_modules/**/*
